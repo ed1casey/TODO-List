@@ -54,7 +54,6 @@ public class TodoListGUI {
         frame.add(inputPanel, BorderLayout.NORTH);
         frame.add(buttonPanel, BorderLayout.SOUTH);
 
-        // Добавляем обработчики событий
         addButton.addActionListener(e -> addTask());
         deleteButton.addActionListener(e -> deleteTask());
         completeButton.addActionListener(e -> completeTask());
@@ -90,9 +89,9 @@ public class TodoListGUI {
         if (index != -1) {
             Task task = tasks.get(index);
             task.markAsCompleted();
-            taskListModel.set(index, task); // Обновляем модель списка
+            taskListModel.set(index, task);
             saveTasksToFile();
-            taskJList.repaint(); // Перерисовываем список для обновления отображения
+            taskJList.repaint();
         } else {
             JOptionPane.showMessageDialog(frame, "Пожалуйста, выберите задачу для отметки как выполненную.");
         }
@@ -118,7 +117,6 @@ public class TodoListGUI {
         return new ArrayList<>();
     }
 
-    // Класс для кастомного отображения задач в списке
     private class TaskCellRenderer extends DefaultListCellRenderer {
         @Override
         public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
